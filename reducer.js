@@ -9,24 +9,30 @@ const ACTIONS = {
 };
 
 /**
- * @param { Object } state : l'état courrant
+ * @param { {name : string, count : number, maxValue : number} } state : l'état courrant
  * @param {{type : string, payload : *}} action : action à appliquer. Contient un type et un contenu (payload)
  * @returns { Object } le nouveau état modifié (ou non) par l'action
  */
 const reducer = (state, action) => {
   switch (action.type) {
     case ACTIONS.INCREMENT:
-      return { name: state.name, count: state.count + action.payload };
+      return {
+        ...state,
+        count: Math.min(state.count + action.payload, state.maxValue),
+      };
     case ACTIONS.DECREMENT:
-      return { name: state.name, count: state.count - action.payload };
+      return {
+        ...state,
+        count: Math.max(state.count - action.payload, 0),
+      };
     case ACTIONS.RESET:
-      return { name: state.name, count: 0 };
+      return { ...state, count: 0 };
     default:
       return state;
   }
 };
 
-let counter = { name: "Timer", count: 0 };
+let counter = { name: "Timer", count: 0, maxValue: 15 };
 const incrementAction = { type: ACTIONS.INCREMENT, payload: 1 };
 
 counter = reducer(counter, incrementAction);
