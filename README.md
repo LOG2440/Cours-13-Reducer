@@ -21,7 +21,7 @@ Où _type_ est le type de l'action (souvent un _String_) et _payload_ est le con
 
 Cet exemple illustre un _reducer_ qui permet de gérer l'état d'un compteur : incrémenter, décrémenter et remettre à 0 sa valeur à travers les actions suivantes :
 
-```json
+```js
 const ACTIONS = {
   INCREMENT: "increment",
   DECREMENT: "decrement",
