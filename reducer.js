@@ -9,9 +9,9 @@ const ACTIONS = {
 };
 
 /**
- * @param { {name : string, count : number, maxValue : number} } state : l'état courrant
- * @param {{type : string, payload : *}} action : action à appliquer. Contient un type et un contenu (payload)
- * @returns { Object } le nouveau état modifié (ou non) par l'action
+ * @param { {name : string, count : number, maxValue : number} } state l'état courrant
+ * @param {{type : string, payload : state}} action action à appliquer. Contient un type et un contenu (payload)
+ * @returns { state } le nouveau état modifié (ou non) par l'action
  */
 const reducer = (state, action) => {
   switch (action.type) {
